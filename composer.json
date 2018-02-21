@@ -14,7 +14,8 @@
         "symfony/yaml": "^3.4"
     },
     "require-dev": {
-        "symfony/dotenv": "^3.4"
+        "symfony/dotenv": "^3.4",
+        "symfony/phpunit-bridge": "^3.4"
     },
     "config": {
         "preferred-install": {
