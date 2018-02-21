@@ -33,6 +33,7 @@ class Book
     /**
      * @var Category
      * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $category;
 

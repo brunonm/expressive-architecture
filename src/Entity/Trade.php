@@ -21,18 +21,21 @@ class Trade
     /**
      * @var Reader
      * @ORM\ManyToOne(targetEntity="Reader")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $oldReader;
 
     /**
      * @var Reader
      * @ORM\ManyToOne(targetEntity="Reader")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $newReader;
 
     /**
      * @var Book
      * @ORM\ManyToOne(targetEntity="Book")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $book;
 
