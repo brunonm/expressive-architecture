@@ -9,6 +9,8 @@
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^3.4",
         "symfony/lts": "^3",
+        "symfony/maker-bundle": "^1.0",
+        "symfony/orm-pack": "^1.0",
         "symfony/yaml": "^3.4"
     },
     "require-dev": {
@@ -22,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "ThatBook\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "ThatBook\\Tests\\": "tests/"
         }
     },
     "replace": {
