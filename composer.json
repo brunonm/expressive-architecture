@@ -4,6 +4,8 @@
     "require": {
         "php": "^7.0.8",
         "ext-iconv": "*",
+        "league/tactician-bundle": "^1.1",
+        "league/tactician-doctrine": "^1.1",
         "overblog/graphql-bundle": "^0.10.3",
         "symfony/console": "^3.4",
         "symfony/flex": "^1.0",
@@ -14,6 +16,7 @@
         "symfony/yaml": "^3.4"
     },
     "require-dev": {
+        "mockery/mockery": "^1.0",
         "symfony/dotenv": "^3.4",
         "symfony/phpunit-bridge": "^3.4"
     },
