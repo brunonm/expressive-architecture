@@ -27,7 +27,7 @@ class Reader
 
     /**
      * @var ArrayCollection | Book[]
-     * @ORM\ManyToMany(targetEntity="Book")
+     * @ORM\ManyToMany(targetEntity="Book", cascade={"persist", "remove"})
      * @ORM\JoinTable(
      *   name="reader_book",
      *   joinColumns={@ORM\JoinColumn(name="reader_id", referencedColumnName="id")},
@@ -38,7 +38,7 @@ class Reader
 
     /**
      * @var ArrayCollection | Book[]
-     * @ORM\ManyToMany(targetEntity="Book")
+     * @ORM\ManyToMany(targetEntity="Book", cascade={"persist", "remove"})
      * @ORM\JoinTable(
      *   name="wishlist",
      *   joinColumns={@ORM\JoinColumn(name="reader_id", referencedColumnName="id")},
@@ -52,5 +52,12 @@ class Reader
         $this->name = $name;
         $this->books = new ArrayCollection();
         $this->wishlist = new ArrayCollection();
+    }
+
+    public function registerBook(Book $book)
+    {
+        if (!$this->books->contains($book)) {
+            $this->books[] = $book;
+        }
     }
 }

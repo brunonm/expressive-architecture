@@ -3,11 +3,10 @@ declare(strict_types=1);
 
 namespace ThatBook\Repository;
 
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use ThatBook\Entity\Trade;
 
-class TradeRepository extends ServiceEntityRepository
+class TradeRepository  extends AbstractRepository
 {
     public function __construct(RegistryInterface $registry)
     {
