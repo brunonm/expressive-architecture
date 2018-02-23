@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 abstract class AbstractIntegrationTestCase extends KernelTestCase
 {
     /**
-     * @var \Psr\Container\ContainerInterface
+     * @var \Symfony\Component\DependencyInjection\ContainerInterface
      */
     protected $container;
 
@@ -43,7 +43,7 @@ abstract class AbstractIntegrationTestCase extends KernelTestCase
 
     protected function getServiceBus(): CommandBus
     {
-        return $this->container->get('tactician.commandbus');
+        return $this->container->get('tactician.commandbus.default');
     }
 
     protected function createDatabase()

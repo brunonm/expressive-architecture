@@ -7,6 +7,7 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
+use ThatBook\Service\HandlerInterface;
 
 class Kernel extends BaseKernel
 {
@@ -44,6 +45,9 @@ class Kernel extends BaseKernel
         $loader->load($confDir.'/{packages}/'.$this->environment.'/**/*'.self::CONFIG_EXTS, 'glob');
         $loader->load($confDir.'/{services}'.self::CONFIG_EXTS, 'glob');
         $loader->load($confDir.'/{services}_'.$this->environment.self::CONFIG_EXTS, 'glob');
+
+        $handlerDefinition = $container->registerForAutoconfiguration(HandlerInterface::class);
+        $handlerDefinition->addTag('tactician.handler', ['typehints' => true]);
     }
 
     protected function configureRoutes(RouteCollectionBuilder $routes)

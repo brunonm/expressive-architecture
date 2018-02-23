@@ -3,13 +3,14 @@ declare(strict_types=1);
 
 namespace ThatBook\Service\Reader;
 
+use ThatBook\Service\HandlerInterface;
 use ThatBook\Service\Reader\RegisterReaderBook;
 use ThatBook\Repository\ReaderRepository;
 use ThatBook\Repository\BookRepository;
 use ThatBook\Exception\ReaderNotFoundException;
 use ThatBook\Exception\BookNotFoundException;
 
-class RegisterReaderBookHandler
+class RegisterReaderBookHandler implements HandlerInterface
 {
     /**
      * @var ReaderRepository
