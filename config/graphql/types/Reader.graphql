@@ -1,0 +1,6 @@
+type Reader {
+  id: ID!
+  name: String!
+  books: [Book]
+  wishlist: [Book]
+}

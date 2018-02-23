@@ -1,0 +1,6 @@
+type Book {
+  id: ID!
+  title: String!
+  publisher: String!
+  category: Category!
+}
