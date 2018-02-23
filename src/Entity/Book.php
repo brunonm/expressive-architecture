@@ -43,4 +43,9 @@ class Book
         $this->publisher = $publisher;
         $this->category = $category;
     }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
 }

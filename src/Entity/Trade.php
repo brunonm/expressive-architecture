@@ -52,4 +52,9 @@ class Trade
         $this->book = $book;
         $this->createdAt = new \DateTime();
     }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
 }

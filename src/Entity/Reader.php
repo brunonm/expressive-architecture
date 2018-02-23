@@ -54,10 +54,20 @@ class Reader
         $this->wishlist = new ArrayCollection();
     }
 
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
     public function registerBook(Book $book)
     {
         if (!$this->books->contains($book)) {
             $this->books[] = $book;
         }
+    }
+
+    public function getBooks(): ArrayCollection
+    {
+        return $this->books;
     }
 }

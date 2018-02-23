@@ -28,4 +28,9 @@ class Category
     {
         $this->title = $title;
     }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
 }
