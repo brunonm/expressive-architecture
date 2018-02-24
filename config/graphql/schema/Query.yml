@@ -2,10 +2,9 @@ Query:
     type: object
     config:
         fields:
-            categories:
-                type: "[Category]"
-                resolve: '@=service("ThatBook\\Repository\\CategoryRepository").findAll()'
             books:
                 type: "[Book]"
+                resolve: '@=service("ThatBook\\Repository\\BookRepository").findAll()'
             readers:
                 type: "[Reader]"
+                resolve: '@=service("ThatBook\\Repository\\ReaderRepository").findAll()'
