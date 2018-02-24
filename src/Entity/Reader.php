@@ -6,6 +6,7 @@ namespace ThatBook\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use ThatBook\Exception\ReaderAlreadyHasBookException;
 
 /**
  * @ORM\Entity(repositoryClass="ThatBook\Repository\ReaderRepository")
@@ -60,15 +61,39 @@ class Reader
         return $this->id;
     }
 
-    public function registerBook(Book $book)
+    public function registerBook(Book $book): self
     {
         if (!$this->books->contains($book)) {
             $this->books[] = $book;
         }
+
+        if ($this->wishlist->contains($book)) {
+            $this->wishlist->removeElement($book);
+        }
+
+        return $this;
+    }
+
+    public function registerWish(Book $book): self
+    {
+        if ($this->books->contains($book)) {
+            throw new ReaderAlreadyHasBookException();
+        }
+
+        if (!$this->wishlist->contains($book)) {
+            $this->wishlist[] = $book;
+        }
+
+        return $this;
     }
 
     public function getBooks(): Collection
     {
         return $this->books;
+    }
+
+    public function getWishlist(): Collection
+    {
+        return $this->wishlist;
     }
 }
