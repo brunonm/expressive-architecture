@@ -61,6 +61,11 @@ class Reader
         return $this->id;
     }
 
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
     public function registerBook(Book $book): self
     {
         if (!$this->books->contains($book)) {

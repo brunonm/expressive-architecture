@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ThatBook\Tests\Unit\Service\Reader;
+namespace ThatBook\Tests\Unit\Service;
 
 use ThatBook\Tests\Unit\AbstractUnitTestCase;
 use ThatBook\Entity\Reader;

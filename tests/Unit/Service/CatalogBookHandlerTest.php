@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ThatBook\Tests\Unit\Service\Reader;
+namespace ThatBook\Tests\Unit\Service;
 
 use ThatBook\Tests\Unit\AbstractUnitTestCase;
 use ThatBook\Repository\BookRepository;
@@ -18,12 +18,10 @@ class CatalogBookHandlerTest extends AbstractUnitTestCase
     protected function setUp()
     {
         $this->bookRepoMock = M::mock(BookRepository::class);
-
-
         $this->handler = new CatalogBookHandler($this->bookRepoMock);
     }
 
-    public function testShouldRCatalogABook()
+    public function testShouldCatalogABook()
     {
         $this->bookRepoMock->shouldReceive('store')->once();
 
