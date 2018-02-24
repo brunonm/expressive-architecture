@@ -4,7 +4,16 @@ tactician:
     commandbus:
         default:
             middleware:
-                - ThatBook\Middleware\ReleaseRecordedEventsMiddleware
+                - ThatBook\Middleware\QueueMiddleware
                 - tactician.middleware.locking
+                - ThatBook\Middleware\ReleaseRecordedEventsMiddleware
+                - tactician.middleware.doctrine
+                - tactician.middleware.command_handler
+        mutation:
+            middleware:
+                - ThatBook\Middleware\QueueMiddleware
+                - ThatBook\Middleware\GraphQLMiddleware
+                - tactician.middleware.locking
+                - ThatBook\Middleware\ReleaseRecordedEventsMiddleware
                 - tactician.middleware.doctrine
                 - tactician.middleware.command_handler

@@ -20,10 +20,10 @@ class CatalogBookHandler implements HandlerInterface
         $this->bookRepository = $bookRepository;
     }
 
-    public function handle(CatalogBook $command)
+    public function handle(CatalogBook $command): Book
     {
         $book = new Book($command->getTitle(), $command->getPublisher(), $command->getCategory());
-
         $this->bookRepository->store($book);
+        return $book;
     }
 }

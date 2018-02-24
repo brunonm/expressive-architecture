@@ -26,3 +26,5 @@ services:
         autowire: false
 
     ThatBook\Event\EventRecorder: '@event_recorder'
+    
+    League\Tactician\CommandBus: '@tactician.commandbus.default'

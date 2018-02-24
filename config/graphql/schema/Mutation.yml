@@ -10,7 +10,7 @@ Mutation:
                     readerId:
                         type: String!                        
                 resolve: >
-                    @=service("tactician.commandbus.default")
+                    @=service("tactician.commandbus.mutation")
                         .handle(
                             newObject("ThatBook\\Service\\RegisterReaderBook", [
                                 args["bookId"],
@@ -26,7 +26,7 @@ Mutation:
                     readerId:
                         type: String!                        
                 resolve: >
-                    @=service("tactician.commandbus.default")
+                    @=service("tactician.commandbus.mutation")
                         .handle(
                             newObject("ThatBook\\Service\\RegisterReaderWish", [
                                 args["bookId"],
@@ -35,16 +35,16 @@ Mutation:
                         )
 
             catalogBook:
-                type: Boolean
+                type: Book
                 args:
                     title:
                         type: String!
                     publisher:
-                        type: String
+                        type: String!
                     category:
-                        type: ID!
+                        type: Category!
                 resolve: >
-                    @=service("tactician.commandbus.default")
+                    @=service("tactician.commandbus.mutation")
                         .handle(
                             newObject("ThatBook\\Service\\CatalogBook", [
                                 args["title"],
@@ -54,12 +54,12 @@ Mutation:
                         )
 
             registerReader:
-                type: Boolean
+                type: Reader
                 args:
                     name:
                         type: String!
                 resolve: >
-                    @=service("tactician.commandbus.default")
+                    @=service("tactician.commandbus.mutation")
                         .handle(
                             newObject("ThatBook\\Service\\RegisterReader", [
                                 args["name"]
