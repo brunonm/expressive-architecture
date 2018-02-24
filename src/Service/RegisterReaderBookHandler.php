@@ -9,6 +9,8 @@ use ThatBook\Repository\ReaderRepository;
 use ThatBook\Repository\BookRepository;
 use ThatBook\Exception\ReaderNotFoundException;
 use ThatBook\Exception\BookNotFoundException;
+use ThatBook\Event\EventRecorder;
+use ThatBook\Event\ReaderBookRegisteredEvent;
 
 class RegisterReaderBookHandler implements HandlerInterface
 {
@@ -22,10 +24,19 @@ class RegisterReaderBookHandler implements HandlerInterface
      */
     private $bookRepository;
 
-    public function __construct(ReaderRepository $readerRepository, BookRepository $bookRepository)
-    {
+    /**
+     * @var EventRecorder
+     */
+    private $eventRecorder;
+
+    public function __construct(
+        ReaderRepository $readerRepository,
+        BookRepository $bookRepository,
+        EventRecorder $eventRecorder
+    ) {
         $this->readerRepository = $readerRepository;
         $this->bookRepository = $bookRepository;
+        $this->eventRecorder = $eventRecorder;
     }
 
     public function handle(RegisterReaderBook $command)
@@ -41,5 +52,7 @@ class RegisterReaderBookHandler implements HandlerInterface
         $reader->registerBook($book);
 
         $this->readerRepository->store($reader);
+
+        $this->eventRecorder->record(new ReaderBookRegisteredEvent($book, $reader));
     }
 }

@@ -10,6 +10,7 @@ use ThatBook\Service\RegisterReaderBook;
 use ThatBook\Service\RegisterReaderBookHandler;
 use ThatBook\Repository\ReaderRepository;
 use ThatBook\Repository\BookRepository;
+use ThatBook\Event\EventRecorder;
 use \Mockery as M;
 
 class RegisterReaderBookHandlerTest extends AbstractUnitTestCase
@@ -20,11 +21,19 @@ class RegisterReaderBookHandlerTest extends AbstractUnitTestCase
 
     private $bookRepoMock;
 
+    private $recorderMock;
+
     protected function setUp()
     {
         $this->readerRepoMock = M::mock(ReaderRepository::class);
         $this->bookRepoMock = M::mock(BookRepository::class);
-        $this->handler = new RegisterReaderBookHandler($this->readerRepoMock, $this->bookRepoMock);
+        $this->recorderMock = M::mock(EventRecorder::class)->makePartial();
+
+        $this->handler = new RegisterReaderBookHandler(
+            $this->readerRepoMock,
+            $this->bookRepoMock,
+            $this->recorderMock
+        );
     }
 
     public function testShouldRegisterABook()
@@ -43,6 +52,28 @@ class RegisterReaderBookHandlerTest extends AbstractUnitTestCase
         $this->bookRepoMock
             ->shouldReceive('find')
             ->andReturn(M::mock(Book::class));
+
+        $command = new RegisterReaderBook('bookId', 'readerId');
+
+        $this->handler->handle($command);
+    }
+
+    public function testShouldRecordAnEvent()
+    {
+        $readerMock = M::mock(Reader::class);
+        $readerMock->shouldReceive('registerBook');
+
+        $this->readerRepoMock
+            ->shouldReceive('find')
+            ->andReturn($readerMock);
+
+        $this->readerRepoMock->shouldReceive('store');
+
+        $this->bookRepoMock
+            ->shouldReceive('find')
+            ->andReturn(M::mock(Book::class));
+
+        $this->recorderMock->shouldReceive('record')->once();
 
         $command = new RegisterReaderBook('bookId', 'readerId');
 
