@@ -89,17 +89,26 @@
     "ocramius/proxy-manager": {
         "version": "2.2.0"
     },
-    "overblog/graphql-bundle": {
-        "version": "0.9",
+    "overblog/graphiql-bundle": {
+        "version": "0.1",
         "recipe": {
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "master",
-            "version": "0.9",
-            "ref": "31775bd62133c1ed66fac537694909c25fbfb879"
+            "version": "0.1",
+            "ref": "fe8d172f2480efc598f5a8be0e732656d3594cec"
+        }
+    },
+    "overblog/graphql-bundle": {
+        "version": "0.11",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.11",
+            "ref": "cb22b949fa6a4b01f6955e78a58444605f062616"
         }
     },
     "overblog/graphql-php-generator": {
-        "version": "v0.6.0"
+        "version": "v0.7.2"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -144,7 +153,7 @@
         "version": "v4.0.4"
     },
     "symfony/expression-language": {
-        "version": "v4.0.4"
+        "version": "v4.0.5"
     },
     "symfony/filesystem": {
         "version": "v4.0.4"
@@ -177,7 +186,7 @@
         "version": "v4.0.4"
     },
     "symfony/inflector": {
-        "version": "v4.0.4"
+        "version": "v4.0.5"
     },
     "symfony/lts": {
         "version": "4-dev"
@@ -192,7 +201,7 @@
         }
     },
     "symfony/options-resolver": {
-        "version": "v4.0.4"
+        "version": "v4.0.5"
     },
     "symfony/orm-pack": {
         "version": "v1.0.5"
@@ -210,7 +219,7 @@
         "version": "v1.7.0"
     },
     "symfony/property-access": {
-        "version": "v4.0.4"
+        "version": "v4.0.5"
     },
     "symfony/routing": {
         "version": "4.0",
@@ -221,8 +230,23 @@
             "ref": "cda8b550123383d25827705d05a42acf6819fe4e"
         }
     },
+    "symfony/twig-bridge": {
+        "version": "v4.0.5"
+    },
+    "symfony/twig-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "f75ac166398e107796ca94cc57fa1edaa06ec47f"
+        }
+    },
     "symfony/yaml": {
         "version": "v4.0.4"
+    },
+    "twig/twig": {
+        "version": "v2.4.4"
     },
     "webonyx/graphql-php": {
         "version": "v0.11.5"

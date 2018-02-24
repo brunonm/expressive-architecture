@@ -1,3 +1,5 @@
+.DS_Store
+
 ###> symfony/framework-bundle ###
 .env
 /public/bundles/

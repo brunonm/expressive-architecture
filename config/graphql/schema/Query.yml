@@ -1,0 +1,11 @@
+Query:
+    type: object
+    config:
+        fields:
+            categories:
+                type: "[Category]"
+                resolve: '@=service("ThatBook\\Repository\\CategoryRepository").findAll()'
+            books:
+                type: "[Book]"
+            readers:
+                type: "[Reader]"

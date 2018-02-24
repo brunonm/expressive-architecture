@@ -15,7 +15,11 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     ThatBook\:
         resource: '../src/*'
-        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+        exclude: '../src/{Entity,Repository,Migrations,Tests,Kernel.php}'
+
+    ThatBook\Repository\:
+        resource: '../src/Repository'
+        public: true
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

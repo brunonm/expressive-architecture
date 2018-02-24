@@ -5,7 +5,10 @@ overblog_graphql:
         mappings:
             auto_discover: false
             types:
-                -
-                    type: yaml
-                    dir: "%kernel.project_dir%/config/graphql/types"
-                    suffix: ~
+                -  type: graphql
+                   dir: "%kernel.project_dir%/config/graphql/types"
+                   suffix: ~
+                -  type: yaml
+                   dir: "%kernel.project_dir%/config/graphql/schema"
+                   suffix: ~
+                    
