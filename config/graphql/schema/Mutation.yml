@@ -17,6 +17,7 @@ Mutation:
                                 args["readerId"]
                             ])
                         )
+                        
             registerReaderWish:
                 type: Boolean
                 args:
@@ -30,5 +31,24 @@ Mutation:
                             newObject("ThatBook\\Service\\RegisterReaderWish", [
                                 args["bookId"],
                                 args["readerId"]
+                            ])
+                        )
+                        
+            catalogBook:
+                type: Boolean
+                args:
+                    title:
+                        type: String!
+                    publisher:
+                        type: String
+                    category:
+                        type: ID!
+                resolve: >
+                    @=service("tactician.commandbus.default")
+                        .handle(
+                            newObject("ThatBook\\Service\\CatalogBook", [
+                                args["title"],
+                                args["publisher"],
+                                args["category"]
                             ])
                         )

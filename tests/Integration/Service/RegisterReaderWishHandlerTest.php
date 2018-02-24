@@ -7,7 +7,6 @@ use ThatBook\Tests\Integration\AbstractIntegrationTestCase;
 use ThatBook\Service\RegisterReaderWish;
 use ThatBook\Entity\Reader;
 use ThatBook\Entity\Book;
-use ThatBook\Entity\Category;
 
 class RegisterReaderWishHandlerTest extends AbstractIntegrationTestCase
 {
@@ -16,10 +15,7 @@ class RegisterReaderWishHandlerTest extends AbstractIntegrationTestCase
         $reader = new Reader('Bruno');
         $this->em->persist($reader);
 
-        $category = new Category('Aventura');
-        $this->em->persist($category);
-
-        $book = new Book('Pequeni princípe', 'Tenante', $category);
+        $book = new Book('Pequeni princípe', 'Tenante', 'CHILDREN');
         $this->em->persist($book);
 
         $this->em->flush();

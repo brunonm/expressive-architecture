@@ -1,4 +1,12 @@
-type Category {
-  id: ID!
-  title: String
+enum Category {
+  ACTION
+  ADVENTURE
+  BIOGRAPHY
+  CHILDREN
+  COMEDY
+  FICTION
+  HISTORY
+  ROMANCE
+  THRILLER
+  HORROR
 }
