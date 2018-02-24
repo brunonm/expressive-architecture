@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace ThatBook\Service\Reader;
+namespace ThatBook\Service;
 
 use ThatBook\Service\HandlerInterface;
-use ThatBook\Service\Reader\RegisterReaderBook;
+use ThatBook\Service\RegisterReaderWish;
 use ThatBook\Repository\ReaderRepository;
 use ThatBook\Repository\BookRepository;
 use ThatBook\Exception\ReaderNotFoundException;
 use ThatBook\Exception\BookNotFoundException;
 
-class RegisterReaderBookHandler implements HandlerInterface
+class RegisterReaderWishHandler implements HandlerInterface
 {
     /**
      * @var ReaderRepository
@@ -28,7 +28,7 @@ class RegisterReaderBookHandler implements HandlerInterface
         $this->bookRepository = $bookRepository;
     }
 
-    public function handle(RegisterReaderBook $command)
+    public function handle(RegisterReaderWish $command)
     {
         if (!$reader = $this->readerRepository->find($command->getReaderId())) {
             throw new ReaderNotFoundException();
@@ -38,7 +38,7 @@ class RegisterReaderBookHandler implements HandlerInterface
             throw new BookNotFoundException();
         }
 
-        $reader->registerBook($book);
+        $reader->registerWish($book);
 
         $this->readerRepository->store($reader);
     }

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace ThatBook\Service\Reader;
+namespace ThatBook\Service;
 
-class RegisterReaderWish
+class RegisterReaderBook
 {
     /**
      * @var string

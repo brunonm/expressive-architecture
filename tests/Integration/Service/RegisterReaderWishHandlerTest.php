@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace ThatBook\Tests\Integration\Service\Reader;
+namespace ThatBook\Tests\Integration\Service;
 
 use ThatBook\Tests\Integration\AbstractIntegrationTestCase;
-use ThatBook\Service\Reader\RegisterReaderBook;
+use ThatBook\Service\RegisterReaderWish;
 use ThatBook\Entity\Reader;
 use ThatBook\Entity\Book;
 use ThatBook\Entity\Category;
 
-class RegisterReaderBookHandlerTest extends AbstractIntegrationTestCase
+class RegisterReaderWishHandlerTest extends AbstractIntegrationTestCase
 {
     public function testShouldRegisterABook()
     {
@@ -24,9 +24,9 @@ class RegisterReaderBookHandlerTest extends AbstractIntegrationTestCase
 
         $this->em->flush();
 
-        $this->getServiceBus()->handle(new RegisterReaderBook($book->getId(), $reader->getId()));
+        $this->getServiceBus()->handle(new RegisterReaderWish($book->getId(), $reader->getId()));
 
-        $this->assertCount(1, $reader->getBooks());
-        $this->assertEquals($book, $reader->getBooks()->first());
+        $this->assertCount(1, $reader->getWishlist());
+        $this->assertEquals($book, $reader->getWishlist()->first());
     }
 }

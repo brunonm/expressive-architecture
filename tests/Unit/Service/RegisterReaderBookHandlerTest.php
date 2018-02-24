@@ -6,13 +6,13 @@ namespace ThatBook\Tests\Unit\Service\Reader;
 use ThatBook\Tests\Unit\AbstractUnitTestCase;
 use ThatBook\Entity\Reader;
 use ThatBook\Entity\Book;
-use ThatBook\Service\Reader\RegisterReaderWish;
-use ThatBook\Service\Reader\RegisterReaderWishHandler;
+use ThatBook\Service\RegisterReaderBook;
+use ThatBook\Service\RegisterReaderBookHandler;
 use ThatBook\Repository\ReaderRepository;
 use ThatBook\Repository\BookRepository;
 use \Mockery as M;
 
-class RegisterReaderWishHandlerTest extends AbstractUnitTestCase
+class RegisterReaderBookHandlerTest extends AbstractUnitTestCase
 {
     private $handler;
 
@@ -24,13 +24,13 @@ class RegisterReaderWishHandlerTest extends AbstractUnitTestCase
     {
         $this->readerRepoMock = M::mock(ReaderRepository::class);
         $this->bookRepoMock = M::mock(BookRepository::class);
-        $this->handler = new RegisterReaderWishHandler($this->readerRepoMock, $this->bookRepoMock);
+        $this->handler = new RegisterReaderBookHandler($this->readerRepoMock, $this->bookRepoMock);
     }
 
-    public function testShouldRegisterAWish()
+    public function testShouldRegisterABook()
     {
         $readerMock = M::mock(Reader::class);
-        $readerMock->shouldReceive('registerWish')->once();
+        $readerMock->shouldReceive('registerBook')->once();
 
         $this->readerRepoMock
             ->shouldReceive('find')
@@ -44,7 +44,7 @@ class RegisterReaderWishHandlerTest extends AbstractUnitTestCase
             ->shouldReceive('find')
             ->andReturn(M::mock(Book::class));
 
-        $command = new RegisterReaderWish('bookId', 'readerId');
+        $command = new RegisterReaderBook('bookId', 'readerId');
 
         $this->handler->handle($command);
     }
@@ -56,7 +56,7 @@ class RegisterReaderWishHandlerTest extends AbstractUnitTestCase
     {
         $this->readerRepoMock->shouldReceive('find')->andReturn(M::mock(Reader::class));
         $this->bookRepoMock->shouldReceive('find')->andReturn(null);
-        $command = new RegisterReaderWish('bookId', 'readerId');
+        $command = new RegisterReaderBook('bookId', 'readerId');
         $this->handler->handle($command);
     }
 
@@ -67,7 +67,7 @@ class RegisterReaderWishHandlerTest extends AbstractUnitTestCase
     {
         $this->readerRepoMock->shouldReceive('find')->andReturn(null);
         $this->bookRepoMock->shouldReceive('find')->andReturn(M::mock(Book::class));
-        $command = new RegisterReaderWish('bookId', 'readerId');
+        $command = new RegisterReaderBook('bookId', 'readerId');
         $this->handler->handle($command);
     }
 }

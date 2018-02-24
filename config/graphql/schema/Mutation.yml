@@ -1,0 +1,34 @@
+Mutation:
+    type: object
+    config:
+        fields:
+            registerReaderBook:
+                type: Boolean
+                args:
+                    bookId:
+                        type: String!
+                    readerId:
+                        type: String!                        
+                resolve: >
+                    @=service("tactician.commandbus.default")
+                        .handle(
+                            newObject("ThatBook\\Service\\RegisterReaderBook", [
+                                args["bookId"],
+                                args["readerId"]
+                            ])
+                        )
+            registerReaderWish:
+                type: Boolean
+                args:
+                    bookId:
+                        type: String!
+                    readerId:
+                        type: String!                        
+                resolve: >
+                    @=service("tactician.commandbus.default")
+                        .handle(
+                            newObject("ThatBook\\Service\\RegisterReaderWish", [
+                                args["bookId"],
+                                args["readerId"]
+                            ])
+                        )
