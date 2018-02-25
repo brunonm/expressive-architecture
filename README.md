@@ -4,11 +4,26 @@ This repository was created to show some concepts from "Projetando uma arquitetu
 
 ## That Book
 
+Platform to find opportunities for book trade among readers.
+
+### Features
+
+ - Symfony 4
+ - GraphQL
+ - Command Bus by Tactician
+ - DDDish
+
 ### Setup
 
-### Usage
+```bash
+$ composer install
+```
 
-### Issues
+### Tests
+
+```bash
+$ bin/phpunit
+```
 
 ### License
 
