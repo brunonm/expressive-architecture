@@ -1,6 +1,6 @@
 # The Expressive Architecture
 
-This repository was created to show some concepts from "Projetando uma arquitetura expressiva" talk. Slides will be available soon.
+This repository was created to show some concepts from "Projetando uma arquitetura expressiva" talk. Slides [here](https://www.slideshare.net/brunonm/projetando-uma-arquitetura-expressiva).
 
 ## That Book
 
